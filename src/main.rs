@@ -17,7 +17,6 @@ fn main() {
         else if token == lexer::tokens::Token::ILLEGAL {
             panic!("ILLEGAL TOKEN");
         }
-        // escrever o tipo do token e seu valor
         else {
             println!("{:?}", token);
         }

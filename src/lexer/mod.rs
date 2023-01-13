@@ -120,6 +120,8 @@ impl Lexer {
                 } 
                 // token irreconhecivel
                 else {
+                    // debug
+                    println!("unrecognized token: {}", self.ch);
                     return tokens::Token::ILLEGAL
                 }
             }
