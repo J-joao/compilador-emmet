@@ -2,8 +2,6 @@
 #[derive(PartialEq)]
 #[derive(Debug)]
 pub enum Token {
-    ILLEGAL,
-    EOF,
     K_A,                // "a"
     K_ABBR,             // "abbr"
     K_ACRONYM,          // "acronym"
@@ -122,13 +120,26 @@ pub enum Token {
     K_VAR,              // "var"
     K_VIDEO,            // "video"
     K_WBR,              // "wbr"
-    WORD(Vec<char>),
-    INT(Vec<char>),     // 123..
-    LBRACE(char),       // {
-    RBRACE(char),       // }
-    ASTERISK(char),     // *
-    SMALLERTHAN(char),  // <
-    GREATERTHAN(char)   // >
+    T_EOF,
+    T_ILLEGAL,
+    T_WORD(Vec<char>),
+    T_CUSTOM_ATTR_CONTENT(String),
+    T_INTLIT(Vec<char>),         // 123..
+    T_LBRACE(char),           // {
+    T_RBRACE(char),           // }
+    T_LPAREN(char),           // (
+    T_RPAREN(char),           // )
+    T_SMALLERTHAN(char),      // <
+    T_GREATERTHAN(char),      // >
+    T_SINGLEQUOTE(char),      // '
+    T_DOUBLEQUOTE(char),      // '
+    T_DOT(char),              // ,
+    T_COMMA(char),            // ,
+    T_ASSIGN(char),           // =
+    T_PLUS(char),             // +
+    T_MINUS(char),            // -
+    T_ASTERISK(char),         // *
+    T_SLASH(char),            // /
 }
 
 pub fn get_keyword(word: &Vec<char>) -> Result<Token, String> {
